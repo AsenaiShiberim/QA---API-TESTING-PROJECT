@@ -39,39 +39,39 @@ JSONPlaceholder is a free, open fake API that's widely used for testing and prac
 ### 1. GET All Posts
 - **Expected:** 200 OK, returns a list of all posts
 - **Actual:** 200 OK, returned 100 posts in JSON format
-- **Status:** ✅ Pass
+- **Status:** Pass
 
 ---
 
 ### 2. GET Single Post
 - **Expected:** 200 OK, returns one post with id, title, body, and userId fields
 - **Actual:** 200 OK, all expected fields present
-- **Status:** ✅ Pass
+- **Status:** Pass
 
 ---
 
 ### 3. GET Post Not Found
 - **Expected:** 404 Not Found — post ID 999 does not exist
 - **Actual:** 404 Not Found
-- **Status:** ✅ Pass
+- **Status:** Pass
 
-> **Note:** I also tested `/posts/1001` independently to check behavior beyond the dataset boundary. Also returned 404 as expected. Two edge cases tested, both passed.
+> **Note:** I also tested `/posts/1001` independently to check behavior beyond the dataset boundary. Also returned 404 as expected. 
 
 ---
 
 ### 4. POST Create Post
 - **Expected:** 201 Created, returns the new post with a generated ID
 - **Actual:** 201 Created — however the API ignored the custom `userId` and `id` values I sent and assigned its own
-- **Status:** ✅ Pass with observation
+- **Status:** Pass with observation
 
-> **Observation:** The API does not allow clients to set their own `id` or `userId`. It overrides submitted values with server-generated ones. In a real project I would flag this with the dev team to confirm whether this is intended behavior.
+> **Observation:** The API does not allow a clients to set their own `id` or `userId`. It overrides the values with server-generated ones. 
 
 ---
 
 ### 5. PUT Update Post
 - **Expected:** 200 OK, returns the updated post
 - **Actual:** 200 OK, title and body updated successfully
-- **Status:** ✅ Pass
+- **Status:** Pass
 
 ---
 
@@ -80,7 +80,7 @@ JSONPlaceholder is a free, open fake API that's widely used for testing and prac
 - **Actual:** 200 OK returned — but a follow-up GET request confirmed the post still existed
 - **Status:** ⚠️ Known Limitation
 
-> **Observation:** JSONPlaceholder simulates DELETE and returns a success response, but no data is actually removed. The same limitation applies to POST and PUT — changes are not persisted between requests. This is a known characteristic of mock APIs and was documented as a system limitation rather than a bug.
+> **Observation:** The JSONPlaceholder simulates DELETE and returns a success response, but no data is actually removed. The same limitation applies to POST and PUT — changes are not persisted between requests. This is a known characteristic of mock APIs. No error but rather a limitaion issue.
 
 ---
 
